@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Vice Coast Cover Studio — GTA-style cover art maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>Vice Coast <span>Cover Studio</span></h1>
+  <p>Your photo, a caption, and a Vice City sunset — into cover art, in seconds. Everything runs offline; photos never leave your machine.</p>
+</header>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <h2>1 · Layout</h2>
+    <div id="layoutRow" class="chips"></div>
+    <h2>2 · Colour grade</h2>
+    <div id="gradeRow" class="chips"></div>
+    <h2>3 · Lettering</h2>
+    <label>Title <input id="titleInput" type="text" maxlength="24" value="VICE COAST"></label>
+    <label>Subtitle <input id="subtitleInput" type="text" maxlength="40" value="Sunset Heist"></label>
+    <label>Badge ribbon <input id="badgeInput" type="text" maxlength="14" value="VICE CITY"></label>
+    <label>Heat meter <span id="heatValue">★★★★☆</span>
+      <input id="heatInput" type="range" min="0" max="5" step="1" value="4">
+    </label>
+    <h2>4 · The selected panel</h2>
+    <p id="panelLabel" class="hint">Panel 1 of 4 — click a panel in the preview to pick it</p>
+    <label>Photo <select id="photoSelect"></select></label>
+    <div class="row">
+      <button id="uploadBtn" type="button">Upload a photo…</button>
+      <button id="fillAllBtn" type="button">Fill all panels</button>
+    </div>
+    <input id="fileInput" type="file" accept="image/*" hidden>
+    <label>Zoom <span id="zoomValue">1.15x</span>
+      <input id="zoomInput" type="range" min="1" max="3" step="0.01" value="1.15">
+    </label>
+    <label>Pan left–right <input id="oxInput" type="range" min="-1" max="1" step="0.01" value="0"></label>
+    <label>Pan up–down <input id="oyInput" type="range" min="-1" max="1" step="0.01" value="0"></label>
+    <label>Panel grade <select id="panelGradeSelect"></select></label>
+    <p class="hint">Tip: drag a panel to pan it, scroll over it to zoom.</p>
+    <h2>5 · Size &amp; export</h2>
+    <div id="sizeRow" class="chips"></div>
+    <div class="row">
+      <button id="exportBtn" type="button" class="primary">Export PNG</button>
+      <button id="exportAllBtn" type="button" class="primary">Export all 3 sizes</button>
+    </div>
+    <div class="row">
+      <button id="undoBtn" type="button">Undo</button>
+      <button id="redoBtn" type="button">Redo</button>
+      <button id="shuffleBtn" type="button">Shuffle look</button>
+    </div>
+    <p id="status" role="status">Pick a layout, a grade and a caption — the cover updates live.</p>
+  </section>
+  <section class="stage" aria-label="Live preview">
+    <canvas id="preview" width="560" height="560" aria-label="Live cover preview"></canvas>
+    <p class="hint">Live preview — click a panel to edit it, drag to pan, scroll to zoom.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
